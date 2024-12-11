@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const NumberOfEvents = ({ onNumberChange }) => {
-  const [eventCount, setEventCount] = useState(32);
+const NumberOfEvents = ({ onNumberChange, defaultNumber = 32 }) => {
+  const [eventCount, setEventCount] = useState(defaultNumber);
 
   const handleInputChange = (event) => {
     const value = parseInt(event.target.value, 10);
-    setEventCount(value > 0 ? value : 32);
+    setEventCount(value > 0 ? value : defaultNumber);
     onNumberChange(value);
   };
 
