@@ -1,6 +1,8 @@
-import NumberOfEvents from '../components/NumberOfEvents';
+// src/__tests__/NumberOfEvents.test.js
+
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import NumberOfEvents from '../components/NumberOfEvents';
 
 describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsComponent;
@@ -24,6 +26,7 @@ describe('<NumberOfEvents /> component', () => {
     const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
     await user.type(numberTextBox, "123")
 
+    // 32 (the default value already written) + 123
     expect(numberTextBox).toHaveValue("32123");
   });
 });
