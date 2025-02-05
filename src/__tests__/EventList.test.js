@@ -1,8 +1,8 @@
-// src/__tests__/EventList.test.js
+// src/__test__/EventList.test.js
 
 import { render, within, waitFor } from '@testing-library/react';
-import EventList from '../components/EventList';
 import { getEvents } from '../api';
+import EventList from '../components/EventList';
 import App from "../App";
 
 describe('<EventList /> component', () => {
@@ -14,16 +14,16 @@ describe('<EventList /> component', () => {
   test('has an element with "list" role', () => {
     expect(EventListComponent.queryByRole("list")).toBeInTheDocument();
   });
-  
+
   test('renders correct number of events', async () => {
-    const allEvents = await getEvents(); 
+    const allEvents = await getEvents();
     EventListComponent.rerender(<EventList events={allEvents} />);
     expect(EventListComponent.getAllByRole("listitem")).toHaveLength(allEvents.length);
   });
 });
 
 describe('<EventList /> integration', () => {
-  test('renders a non-empty list of events when the app is mounted and rendered', async () => {
+  test('renders a list of 32 events when the app is mounted and rendered', async () => {
     const AppComponent = render(<App />);
     const AppDOM = AppComponent.container.firstChild;
     const EventListDOM = AppDOM.querySelector('#event-list');
