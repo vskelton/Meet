@@ -1,6 +1,6 @@
 // src/components/CitySearch.js
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const CitySearch = ({ allLocations, setCurrentCity }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -50,7 +50,8 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         : null
       }
     </div>
- )
+
+  )
 }
 
 export default CitySearch;
