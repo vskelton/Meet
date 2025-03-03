@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
+const NumberOfEvents = ({ currentNOE, setCurrentNOE, setErrorAlert }) => {
 
   const [number, setNumber] = useState(currentNOE);
 
@@ -10,6 +10,16 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
     const value = Number(event.target.value);
     setNumber(value);
     setCurrentNOE(value);
+
+    let errorText;
+    if (isNaN(currentNOE)) {
+      errorText = "Please enter a valid number to see the events"
+    } else if (currentNOE < 1) {
+      errorText = "Please enter a number greater than zero to see the events"
+    } else {
+      errorText =""
+    }
+    setErrorAlert(errorText);
   }
 
   return (
